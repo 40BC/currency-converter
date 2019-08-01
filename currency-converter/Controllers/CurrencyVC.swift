@@ -11,20 +11,35 @@ import UIKit
 class CurrencyVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var baseCurrencyButton: RoundedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        getSymbols()
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.isHidden = true
+
+        baseCurrencyButton.isEnabled = false
+        baseCurrencyButton.setTitle("\(BASE_CURRENCY_NAME): \(BASE_CURRENCY)", for: .normal)
+        baseCurrencyButton.isEnabled = true
+
         getValues()
     }
     
     func getSymbols() {
         CurrencyService.instance.getSupportedSymbols { (success) in
             if success {
-                if CurrencyService.instance.currencies.count > 0 {
-//                    self.tableView.reloadData()
+                if CurrencyService.instance.symbols.count > 0 {
+                    if self.pickerView.isHidden {
+                        self.pickerView.isHidden = false
+                        self.pickerView.reloadAllComponents()
+                    } else {
+                        self.pickerView.isHidden = true
+                    }
                 } else {
                     print("ERROR fetching symbols")
                 }
@@ -38,6 +53,21 @@ class CurrencyVC: UIViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    func setBaseCurrency(base: Symbol) {
+        BASE_CURRENCY_NAME = base.name
+        BASE_CURRENCY = base.symbol
+        
+        baseCurrencyButton.isEnabled = false
+        baseCurrencyButton.setTitle("\(BASE_CURRENCY_NAME): \(BASE_CURRENCY)", for: .normal)
+        baseCurrencyButton.isEnabled = true
+        
+        getValues()
+    }
+    
+    @IBAction func showPickerView(_ sender: Any) {
+        getSymbols()
     }
     
 }
@@ -69,4 +99,35 @@ extension CurrencyVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell.EditingStyle.none
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currency = CurrencyService.instance.currencies[indexPath.row]
+        CurrencyService.instance.selectedCurrency = currency
+        
+        guard let converterVC = storyboard?.instantiateViewController(withIdentifier: "ConverterVC") as? ConverterVC else { return }
+        converterVC.initData(symbol: currency.symbol, value: currency.value)
+        
+        present(converterVC, animated: true, completion: nil)
+    }
+    
+}
+
+extension CurrencyVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return CurrencyService.instance.symbols.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let symbol = CurrencyService.instance.symbols[row]
+        return NSAttributedString(string: "\(symbol.name ?? BASE_CURRENCY_NAME): \(symbol.symbol ?? BASE_CURRENCY)", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 20.0)!])
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let symbol = CurrencyService.instance.symbols[row]
+        setBaseCurrency(base: symbol)
+    }
 }

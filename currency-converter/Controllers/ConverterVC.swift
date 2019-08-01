@@ -16,11 +16,47 @@ class ConverterVC: UIViewController {
     @IBOutlet weak var targetCurrencyValueTxt: UITextField!
     @IBOutlet weak var convertedValueLbl: UILabel!
     
+    var currencySymbol: String!
+    var currencyValue: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ConverterVC.handleTap))
+        view.addGestureRecognizer(tap)
+        
+        setupView()
     }
+    
+    func initData(symbol: String, value: String) {
+        self.currencySymbol = symbol
+        self.currencyValue = value
+    }
+    
+    func setupView() {
+        baseCurrencySymbolLbl.text = BASE_CURRENCY
+        baseCurrencyValueTxt.text = convertDoubleToCurrency(currency: BASE_VALUE)
+        
+        targetCurrencySymbolLbl.text = currencySymbol
+        targetCurrencyValueTxt.text = currencyValue
+    }
+    
+    @IBAction func selectCurrency(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
 
 
+extension ConverterVC:  UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    @objc func handleTap(){
+        view.endEditing(true)
+    }
 }
 

@@ -11,10 +11,12 @@ import Foundation
 // makes type CompletionHandler type Success which is a bool
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
-let API_KEY = "62b8e6f43ad8aec8c1e3edc86e60dec9"
+let API_KEY = "13da4b4211c21e05ae3588c821918926"
 let API_URL = "http://data.fixer.io/api"
 let SYMBOLS_URL = "\(API_URL)/symbols?access_key=\(API_KEY)"
 let LASTEST_URL = "\(API_URL)/latest?access_key=\(API_KEY)"
 let CONVERT_URL = "\(API_URL)/convert?access_key=\(API_KEY)"
 
-let DEFAULT_CURRENCY = "EUR"
+var BASE_CURRENCY_NAME = "Euro"
+var BASE_CURRENCY = "EUR"
+var BASE_VALUE = 1.00
