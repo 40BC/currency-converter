@@ -16,6 +16,7 @@ class CurrencyService {
     var symbols = [Symbol]()
     var currencies = [Currency]()
     var selectedCurrency: Currency?
+    var convertedValue: String = "0.00"
 
     func getSupportedSymbols(completion: @escaping CompletionHandler) {
         symbols = []
@@ -75,6 +76,23 @@ class CurrencyService {
             } else {
                 debugPrint(response.result.error as Any)
                 completion(false)
+            }
+        }
+    }
+    
+    func getConversion(targetCurrency: String, amount: String, completion: @escaping CompletionHandler) {
+        Alamofire.request("\(CONVERT_URL)&from=\(BASE_CURRENCY)&to=\(targetCurrency)&amount=\(amount)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                if let json = JSON(data: data).dictionary {
+                    for (key, value) in json {
+                        if key == "result" {
+                            self.convertedValue = convertDoubleToCurrency(currency: value.doubleValue)
+                        }
+                    }
+                    
+                    completion(true)
+                }
             }
         }
     }

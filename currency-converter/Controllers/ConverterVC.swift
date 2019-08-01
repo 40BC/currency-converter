@@ -41,9 +41,27 @@ class ConverterVC: UIViewController {
         targetCurrencyValueTxt.text = currencyValue
     }
     
+    func convertCurrency() {
+        guard let amount = baseCurrencyValueTxt.text else { return }
+        let sanitizedAmount = amount.replacingOccurrences(of: "$", with: "")
+        CurrencyService.instance.getConversion(targetCurrency: currencySymbol, amount: sanitizedAmount) { (success) in
+            if success {
+                self.targetCurrencyValueTxt.text = CurrencyService.instance.convertedValue
+            } else {
+                print("Conversion failed")
+            }
+        }
+    }
+    
     @IBAction func selectCurrency(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func convert(_ sender: Any) {
+        view.endEditing(true)
+        convertCurrency()
+    }
+    
     
 }
 
@@ -57,6 +75,7 @@ extension ConverterVC:  UITextFieldDelegate {
     
     @objc func handleTap(){
         view.endEditing(true)
+        convertCurrency()
     }
 }
 
