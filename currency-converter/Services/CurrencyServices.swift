@@ -16,18 +16,22 @@ class CurrencyService {
     var currencies = [Currency]()
     
     func getSupportedSymbols(completion: @escaping CompletionHandler) {
-        print("URL: \(SYMBOLS_URL)")
         Alamofire.request(SYMBOLS_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 if let json = JSON(data: data).dictionary {
                     if let symbols = json["symbols"] {
                         for (key, value) in symbols {
-                            print("KEY \(key)")
-                            print("VALUE \(value)")
+                            let symbol = key
+                            let name = value.stringValue
+                            
+//                            self.currencies.append(Currency(symbol: symbol, name: name, value: nil))
                         }
+                        
+                        completion(true)
                     } else {
-                        print("No symbols available")
+                        debugPrint("No symbols available")
+                        completion(false)
                     }
                 }
             } else {
@@ -37,5 +41,29 @@ class CurrencyService {
         }
     }
     
+    func getLatestCurrencyValues(completion: @escaping CompletionHandler) {
+        Alamofire.request(LASTEST_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                if let json = JSON(data: data).dictionary {
+                    if let values = json["rates"] {
+                        for (key, value) in values {
+                            let symbol = key
+                            let rate = value.doubleValue
+                            
+                            self.currencies.append(Currency(symbol: symbol, name: nil, value: convertDoubleToCurrency(currency: rate)))
+                        }
+                        completion(true)
+                    }
+                } else {
+                    debugPrint("No values available")
+                    completion(false)
+                }
+            } else {
+                debugPrint(response.result.error as Any)
+                completion(false)
+            }
+        }
+    }
     
 }

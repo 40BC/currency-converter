@@ -14,7 +14,8 @@ class CurrencyCell: UITableViewCell {
     @IBOutlet weak var currencyValueLbl: UILabel!
 
     func configureCell(currency: Currency) {
-        
+        currencySymbolLbl.text = currency.symbol
+        currencyValueLbl.text = currency.value
     }
 
 }

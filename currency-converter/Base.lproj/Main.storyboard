@@ -136,7 +136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rr1-Ad-qH1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rr1-Ad-qH1">
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -156,8 +156,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIz-PV-b6V" userLabel="CurrencyValue">
-                                                    <rect key="frame" x="322" y="24" width="39" height="37"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="39" translatesAutoresizingMaskIntoConstraints="NO" id="FIz-PV-b6V" userLabel="CurrencyValue">
+                                                    <rect key="frame" x="241" y="24" width="120" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="OFT-IR-aiB"/>
                                                     </constraints>
@@ -169,8 +169,10 @@
                                             <constraints>
                                                 <constraint firstItem="Duz-Gg-wRf" firstAttribute="leading" secondItem="rD6-vn-xAg" secondAttribute="leadingMargin" constant="-1" id="4gd-Dy-5LJ"/>
                                                 <constraint firstItem="Duz-Gg-wRf" firstAttribute="centerY" secondItem="rD6-vn-xAg" secondAttribute="centerY" id="SYq-9v-koZ"/>
+                                                <constraint firstItem="FIz-PV-b6V" firstAttribute="leading" secondItem="Duz-Gg-wRf" secondAttribute="trailing" constant="186" id="a1x-7l-yRK"/>
                                                 <constraint firstItem="Duz-Gg-wRf" firstAttribute="baseline" secondItem="FIz-PV-b6V" secondAttribute="baseline" id="ibw-aK-2iZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="FIz-PV-b6V" secondAttribute="trailing" constant="-1" id="lOo-wP-hNs"/>
+                                                <constraint firstItem="FIz-PV-b6V" firstAttribute="leading" secondItem="Duz-Gg-wRf" secondAttribute="trailing" constant="186" id="nfi-4V-3vF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -191,12 +193,13 @@
                         <viewLayoutGuide key="safeArea" id="cSt-xw-0hN"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="Rr1-Ad-qH1" id="wXV-xu-0BD"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="zQP-0S-Lq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD4-xT-TH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519" y="122"/>
+            <point key="canvasLocation" x="-519.20000000000005" y="121.92118226600985"/>
         </scene>
     </scenes>
 </document>
