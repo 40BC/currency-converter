@@ -12,8 +12,19 @@ class CurrencyVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getSymbols()
+    }
+    
+    func getSymbols() {
+        CurrencyService.instance.getSupportedSymbols { (success) in
+            if success {
+                if CurrencyService.instance.currencies.count > 0 {
+                    print("SUCCESS \(success)")
+                } else {
+                    print("ERROR fetching symbols")
+                }
+            }
+        }
     }
     
 }
