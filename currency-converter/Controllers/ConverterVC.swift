@@ -14,7 +14,6 @@ class ConverterVC: UIViewController {
     @IBOutlet weak var targetCurrencySymbolLbl: UILabel!
     @IBOutlet weak var baseCurrencyValueTxt: UITextField!
     @IBOutlet weak var targetCurrencyValueTxt: UITextField!
-    @IBOutlet weak var convertedValueLbl: UILabel!
     
     var currencySymbol: String!
     var currencyValue: String!

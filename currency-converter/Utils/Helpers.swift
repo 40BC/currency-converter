@@ -8,13 +8,6 @@
 
 import Foundation
 
-//func formatCurrency(currency: String) -> String {
-//    let numberFormatter = NumberFormatter()
-//    numberFormatter.numberStyle = .currency
-//    numberFormatter.locale = Locale.current
-//    return numberFormatter.
-//}
-
 func convertCurrencyToDouble(currency: String) -> Double? {
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .currency
