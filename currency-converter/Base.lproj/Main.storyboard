@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Converter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poR-Yv-H3d">
-                                <rect key="frame" x="15" y="44" width="343" height="42"/>
+                                <rect key="frame" x="15" y="44" width="328.33333333333331" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="FwA-wc-Nhl">
-                                <rect key="frame" x="279" y="174" width="80" height="105"/>
+                                <rect key="frame" x="264.33333333333337" y="174" width="80" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-Wr-gek" userLabel="baseCurrencySymbol">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="48"/>
@@ -46,16 +46,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="urT-Wx-Sx3">
-                                <rect key="frame" x="16" y="174" width="80" height="105"/>
+                                <rect key="frame" x="16" y="174" width="128.33333333333334" height="105"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-0F-sIC" userLabel="baseCurrencyValue">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="39"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" borderStyle="roundedRect" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-0F-sIC" userLabel="baseCurrencyValue">
+                                        <rect key="frame" x="0.0" y="0.0" width="128.33333333333334" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QbP-do-TYf" userLabel="targetCurrencyValue">
-                                        <rect key="frame" x="0.0" y="66" width="80" height="39"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" borderStyle="roundedRect" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="QbP-do-TYf" userLabel="targetCurrencyValue">
+                                        <rect key="frame" x="0.0" y="66" width="128.33333333333334" height="39"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -67,7 +67,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnX-El-TY9">
-                                <rect key="frame" x="15" y="226" width="345" height="1"/>
+                                <rect key="frame" x="15" y="226" width="330.33333333333331" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Hb1-Aq-qBQ"/>
@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8b-ce-gzn">
-                                <rect key="frame" x="90" y="108" width="199" height="39"/>
+                                <rect key="frame" x="90.000000000000014" y="108" width="184.33333333333337" height="39"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="JB0-KX-790"/>
@@ -107,6 +107,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FwA-wc-Nhl" secondAttribute="trailing" constant="16" id="9E6-vc-BQ7"/>
                             <constraint firstItem="poR-Yv-H3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Aod-tc-Wf2"/>
                             <constraint firstItem="o8b-ce-gzn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="IJi-xE-1ff"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="urT-Wx-Sx3" secondAttribute="trailing" constant="200" id="JgI-xh-PY2"/>
                             <constraint firstItem="FwA-wc-Nhl" firstAttribute="top" secondItem="o8b-ce-gzn" secondAttribute="bottom" constant="27" id="MkI-z1-NBv"/>
                             <constraint firstAttribute="trailing" secondItem="AnX-El-TY9" secondAttribute="trailing" constant="15" id="MoR-bu-jpa"/>
                             <constraint firstItem="poR-Yv-H3d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Qe5-oE-ehn"/>
